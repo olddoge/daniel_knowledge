@@ -1,0 +1,50 @@
+<header id="header">
+  <a class="u-url u-uid" href="<%- url_for("/") %>">
+  <% if (theme.logo && theme.logo.enabled) { %>
+    <% if (theme.gravatar && (theme.gravatar.email || theme.gravatar.hash) && theme.logo.gravatar) { %>
+      <% if (theme.gravatar.email) { %>
+        <img id="logo" alt class="u-logo"
+          srcset="<%- gravatar(theme.gravatar.email) %>?s=<%= theme.logo.width %>, <%- gravatar(theme.gravatar.email) %>?s=<%= theme.logo.width*1.5 %> 1.5x, <%- gravatar(theme.gravatar.email) %>?s=<%= theme.logo.width*2 %> 2x"
+          src="<%- gravatar(theme.gravatar.email) %>" />
+      <% } else { %>
+        <img id="logo" alt class="u-logo"
+          srcset="https://www.gravatar.com/avatar/<%= theme.gravatar.hash %>?s=<%= theme.logo.width %>, https://www.gravatar.com/avatar/<%= theme.gravatar.hash %>?s=<%= theme.logo.width*1.5 %> 1.5x, https://www.gravatar.com/avatar/<%= theme.gravatar.hash %>?s=<%= theme.logo.width*2 %> 2x"
+          src="https://www.gravatar.com/avatar/<%= theme.gravatar.hash %>" />
+      <% } %>
+    <% } else { %>
+      <img id="logo" alt class="u-logo" src="<%- url_for(theme.logo.url) %>" />
+    <% } %>
+  <% } %>
+    <div id="title">
+      <h1 class="p-name"><%= config.title %></h1>
+    </div>
+  </a>
+  <div id="nav">
+    <ul>
+      <li class="icon">
+        <a href="#" aria-label="<%- __('icons.menu') %>" data-i18n-attr="aria-label:icons.menu"><i class="fa-solid fa-bars fa-2x"></i></a>
+      </li>
+      <% for (var i in theme.nav) { %><!--
+     --><li><a href="<%- url_for(theme.nav[i]) %>" data-i18n="nav.<%- i %>"><%= __('nav.'+i).replace("nav.", "") %></a></li><!--
+   --><% } %>
+      <% if (theme.language_switcher && theme.language_switcher.enabled && theme.language_switcher.languages) { %><!--
+     --><% var switcherData = language_switcher_data(); %><!--
+     --><% var currentLang = switcherData.currentLanguage; %><!--
+     --><% var currentLanguage = switcherData.languages[currentLang] || {}; %><!--
+     --><li class="language-switcher" aria-label="<%- __('language_switcher.label') %>" data-i18n-attr="aria-label:language_switcher.label"><!--
+       --><button type="button" class="language-switcher-toggle" aria-haspopup="true" aria-expanded="false"><!--
+         --><span data-i18n="language_switcher.label"><%= __('language_switcher.label') %></span><!--
+         --><span class="language-switcher-current" data-language-current><%= currentLanguage.label || currentLang %></span><!--
+         --><i class="fa-solid fa-chevron-down" aria-hidden="true"></i><!--
+       --></button><!--
+       --><ul class="language-switcher-menu"><!--
+       --><% for (var lang in switcherData.languages) { %><!--
+         --><% var option = switcherData.languages[lang]; %><!--
+         --><li><button type="button" class="<%= currentLang === lang ? 'active' : '' %>" data-language-option="<%- lang %>" lang="<%- lang %>"><%= option.label || lang %></button></li><!--
+       --><% } %><!--
+       --></ul><!--
+     --></li><!--
+   --><% } %>
+    </ul>
+  </div>
+</header>

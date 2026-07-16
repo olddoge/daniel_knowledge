@@ -1,0 +1,52 @@
+<div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        <% for (var i in theme.nav) { %>
+          <li><a href="<%- url_for(theme.nav[i]) %>" data-i18n="nav.<%- i %>"><%= __('nav.'+i).replace("nav.", "") %></a></li>
+        <% } %>
+      </ul>
+      <% if (theme.language_switcher && theme.language_switcher.enabled && theme.language_switcher.languages) { %>
+        <% var switcherData = language_switcher_data(); %>
+        <% var currentLang = switcherData.currentLanguage; %>
+        <% var currentLanguage = switcherData.languages[currentLang] || {}; %>
+        <div class="language-switcher" aria-label="<%- __('language_switcher.label') %>" data-i18n-attr="aria-label:language_switcher.label">
+          <button type="button" class="language-switcher-toggle" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-language" aria-hidden="true"></i>
+            <span data-i18n="language_switcher.label"><%= __('language_switcher.label') %></span>
+            <span class="language-switcher-current" data-language-current><%= currentLanguage.label || currentLang %></span>
+            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="language-switcher-menu">
+            <% for (var lang in switcherData.languages) { %>
+              <% var option = switcherData.languages[lang]; %>
+              <button type="button" class="<%= currentLang === lang ? 'active' : '' %>" data-language-option="<%- lang %>" lang="<%- lang %>"><%= option.label || lang %></button>
+            <% } %>
+          </div>
+        </div>
+      <% } %>
+    </div>
+
+    <% let tocHTML = toc(page.content) %>
+    <% if (tocHTML !== '') { %>
+      <div id="toc-footer" style="display: none">
+        <%- toc(page.content) %>
+      </div>
+    <% } %>
+
+    <div id="share-footer" style="display: none">
+      <%- partial('_partial/post/share', { icon_class_name: 'fa-lg' }) %>
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> <span data-i18n="post.mobile.menu"><%= __('post.mobile.menu') %></span></a>
+        <% if (tocHTML !== '') { %>
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> <span data-i18n="post.mobile.toc"><%= __('post.mobile.toc') %></span></a>
+        <% } %>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> <span data-i18n="post.mobile.share"><%= __('post.mobile.share') %></span></a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> <span data-i18n="post.mobile.back_to_top"><%= __('post.mobile.back_to_top') %></span></a>
+    </div>
+
+  </div>
+</div>
