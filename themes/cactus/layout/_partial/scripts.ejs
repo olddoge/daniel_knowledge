@@ -23,7 +23,7 @@
   <script type="text/javascript">
   $(function() {
     // copy-btn HTML
-    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"<%= __('tooltip.copy_tip') %>\" data-i18n-attr=\"aria-label:tooltip.copy_tip\">";
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"<%= __('tooltip.copy_tip') %>\">";
     btn += '<i class="fa-regular fa-clone"></i>';
     btn += '</span>';
     // mount it!
@@ -34,15 +34,11 @@
       }
     });
     clip.on('success', function(e) {
-      var copied = window.CACTUS_TRANSLATE ? window.CACTUS_TRANSLATE("tooltip.copied") : "<%= __('tooltip.copied') %>";
-      e.trigger.setAttribute('aria-label', copied);
+      e.trigger.setAttribute('aria-label', "<%= __('tooltip.copied') %>");
       e.clearSelection();
     })
   })
   </script>
-<% } %>
-<% if (theme.language_switcher && theme.language_switcher.enabled && theme.language_switcher.languages) { %>
-  <script>window.CACTUS_LANGUAGE_SWITCHER=<%- JSON.stringify(language_switcher_data()) %>;</script>
 <% } %>
 <%- js('js/main') %>
 <!-- search -->

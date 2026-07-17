@@ -75,24 +75,17 @@
     font-size: .8rem
 
     ul
-      display: flex
-      flex-wrap: wrap
-      justify-content: flex-end
-      align-items: center
-      gap: .45rem 0
       line-height: 15px
 
       a
         margin-right: 15px
         color: $color-accent-1
-        white-space: nowrap
 
       a:hover
         underline(5px, $color-accent-1)
 
       li
         border-right: 1px dotted $color-accent-1
-        white-space: nowrap
 
       li:last-child
         margin-right: 0
@@ -100,66 +93,6 @@
 
         a
           margin-right: 0
-
-      .language-switcher
-        flex: 0 0 auto
-        position: relative
-        border-right: 0
-        white-space: nowrap
-
-        button
-          margin: 0
-          padding: 0
-          border: 0
-          background: none
-          color: $color-accent-1
-          font: inherit
-          cursor: pointer
-
-        .language-switcher-toggle
-          margin-right: 15px
-
-          span:first-child
-            margin-right: 6px
-            color: $color-text
-
-          .language-switcher-current
-            margin-right: 5px
-
-        .language-switcher-menu
-          position: absolute
-          top: 1.5rem
-          right: 0
-          z-index: 20
-          display: none
-          min-width: 7rem
-          padding: .35rem 0
-          border: 1px dotted $color-accent-1
-          background: $color-background
-          line-height: 1.8
-
-          li
-            display: block
-            margin: 0
-            border-right: 0
-
-          button
-            display: block
-            width: 100%
-            padding: .2rem .75rem
-            text-align: left
-            white-space: nowrap
-
-          button:hover,
-          button.active
-            color: $color-text
-
-          button.active
-            font-weight: 700
-
-        &.open
-          .language-switcher-menu
-            display: block
 
   #actions
     float: right

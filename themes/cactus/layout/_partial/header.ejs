@@ -22,28 +22,10 @@
   <div id="nav">
     <ul>
       <li class="icon">
-        <a href="#" aria-label="<%- __('icons.menu') %>" data-i18n-attr="aria-label:icons.menu"><i class="fa-solid fa-bars fa-2x"></i></a>
+        <a href="#" aria-label="<%- __('icons.menu') %>"><i class="fa-solid fa-bars fa-2x"></i></a>
       </li>
       <% for (var i in theme.nav) { %><!--
-     --><li><a href="<%- url_for(theme.nav[i]) %>" data-i18n="nav.<%- i %>"><%= __('nav.'+i).replace("nav.", "") %></a></li><!--
-   --><% } %>
-      <% if (theme.language_switcher && theme.language_switcher.enabled && theme.language_switcher.languages) { %><!--
-     --><% var switcherData = language_switcher_data(); %><!--
-     --><% var currentLang = switcherData.currentLanguage; %><!--
-     --><% var currentLanguage = switcherData.languages[currentLang] || {}; %><!--
-     --><li class="language-switcher" aria-label="<%- __('language_switcher.label') %>" data-i18n-attr="aria-label:language_switcher.label"><!--
-       --><button type="button" class="language-switcher-toggle" aria-haspopup="true" aria-expanded="false"><!--
-         --><span data-i18n="language_switcher.label"><%= __('language_switcher.label') %></span><!--
-         --><span class="language-switcher-current" data-language-current><%= currentLanguage.label || currentLang %></span><!--
-         --><i class="fa-solid fa-chevron-down" aria-hidden="true"></i><!--
-       --></button><!--
-       --><ul class="language-switcher-menu"><!--
-       --><% for (var lang in switcherData.languages) { %><!--
-         --><% var option = switcherData.languages[lang]; %><!--
-         --><li><button type="button" class="<%= currentLang === lang ? 'active' : '' %>" data-language-option="<%- lang %>" lang="<%- lang %>"><%= option.label || lang %></button></li><!--
-       --><% } %><!--
-       --></ul><!--
-     --></li><!--
+     --><li><a href="<%- url_for(theme.nav[i]) %>"><%= __('nav.'+i).replace("nav.", "") %></a></li><!--
    --><% } %>
     </ul>
   </div>

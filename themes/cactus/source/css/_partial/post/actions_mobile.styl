@@ -34,66 +34,17 @@
       underline(5px, $color-accent-1)
 
     ul
-      display: flex
-      flex-wrap: wrap
-      justify-content: center
-      gap: .25rem .75rem
+      display: table
       margin: 0
       padding: 0
       width: 100%
       list-style-type: none
 
       li
-        display: block
-        padding: 8px 0
+        display: inline-table
+        padding: 10px
+        width: 20%
         vertical-align: middle
-        white-space: nowrap
-
-    .language-switcher
-      clear: both
-      margin: .25rem auto 0
-      padding: .75rem 0 1rem
-      border-top: 1px dotted $color-border
-      color: $color-accent-1
-
-      button
-        margin: 0
-        padding: 0
-        border: 0
-        background: none
-        color: $color-accent-1
-        font: inherit
-        cursor: pointer
-
-      .language-switcher-toggle
-        display: inline-flex
-        align-items: center
-        gap: .35rem
-
-      .language-switcher-toggle span:first-of-type
-        color: $color-text
-
-      .language-switcher-menu
-        display: none
-        margin: .6rem auto 0
-        max-width: 14rem
-        line-height: 1.8
-
-        button
-          display: inline-block
-          padding: .15rem .5rem
-          white-space: nowrap
-
-        button:hover,
-        button.active
-          color: $color-text
-
-        button.active
-          font-weight: 700
-
-      &.open
-        .language-switcher-menu
-          display: block
 
   #actions-footer
     overflow: auto

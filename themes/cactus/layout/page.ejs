@@ -12,7 +12,7 @@
                     <% visibleTags += 1 %>
                   <% } %>
                 <% }) %>
-                <span data-i18n-plural="counter.tag_cloud" data-i18n-count="<%= visibleTags %>"><%- _p('counter.tag_cloud', visibleTags) %></span>
+                <%- _p('counter.tag_cloud', visibleTags) %>
             </div>
             <div class="tag-cloud-tags">
               <%- tagcloud({min_font: 12, max_font: 30, amount: 300}) %>
@@ -27,7 +27,7 @@
                     <% visibleCategories += 1 %>
                   <% } %>
                 <% }) %>
-                <span data-i18n-plural="counter.categories" data-i18n-count="<%= visibleCategories %>"><%- _p('counter.categories', visibleCategories) %></span>
+                <%- _p('counter.categories', visibleCategories) %>
             </div>
             <div class="category-list">
               <%- list_categories() %>
