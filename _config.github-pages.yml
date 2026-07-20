@@ -1,0 +1,4 @@
+# GitHub Pages backup site build overrides.
+url: https://olddoge.github.io/daniel_knowledge
+root: /daniel_knowledge/
+public_dir: public-github-pages

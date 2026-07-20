@@ -1,0 +1,6 @@
+# Server primary site build overrides.
+# TODO: Replace this with your real server domain, for example:
+# url: https://blog.example.com
+url: https://knowledge.olddoge.cn
+root: /
+public_dir: public-server

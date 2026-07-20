@@ -4,6 +4,9 @@
   "private": true,
   "scripts": {
     "build": "hexo generate",
+    "build:server": "hexo --config _config.yml,_config.server.yml clean && hexo --config _config.yml,_config.server.yml generate",
+    "build:github-pages": "hexo --config _config.yml,_config.github-pages.yml clean && hexo --config _config.yml,_config.github-pages.yml generate",
+    "build:all": "npm run build:server && npm run build:github-pages",
     "clean": "hexo clean",
     "deploy": "hexo deploy",
     "server": "hexo server"
